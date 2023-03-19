@@ -7,4 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping
 class IndexController {
     @GetMapping("/")
     fun index() = "index"
+
+    @GetMapping("/posts/save")
+    fun postsSave() = "posts-save"
 }
