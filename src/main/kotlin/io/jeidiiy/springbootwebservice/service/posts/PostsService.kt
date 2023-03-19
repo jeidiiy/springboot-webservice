@@ -34,4 +34,12 @@ class PostsService(
 
     @Transactional(readOnly = true)
     fun findAllDesc() = postsRepository.findAllDesc().asSequence().map { PostsListResponseDto(it) }.toList()
+
+    @Transactional
+    fun delete(id: Long) {
+        val posts =
+            postsRepository.findById(id).orElseThrow { IllegalArgumentException("해당 게시글이 없습니다. id=${id}") }
+
+        postsRepository.delete(posts)
+    }
 }
