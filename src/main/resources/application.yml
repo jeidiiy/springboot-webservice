@@ -12,3 +12,7 @@ spring:
   h2:
     console:
       enabled: true
+  config:
+    use-legacy-processing: true
+  profiles:
+    include: oauth
