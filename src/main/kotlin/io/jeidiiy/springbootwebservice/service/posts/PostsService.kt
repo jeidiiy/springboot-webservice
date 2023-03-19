@@ -1,6 +1,7 @@
 package io.jeidiiy.springbootwebservice.service.posts
 
 import io.jeidiiy.springbootwebservice.domain.posts.PostsRepository
+import io.jeidiiy.springbootwebservice.web.dto.PostsListResponseDto
 import io.jeidiiy.springbootwebservice.web.dto.PostsResponseDto
 import io.jeidiiy.springbootwebservice.web.dto.PostsSaveRequestDto
 import io.jeidiiy.springbootwebservice.web.dto.PostsUpdateRequestDto
@@ -30,4 +31,7 @@ class PostsService(
         val entity = postsRepository.findById(id).orElseThrow { IllegalArgumentException("해당 게시글이 없습니다. id=${id}") }
         return PostsResponseDto(entity)
     }
+
+    @Transactional(readOnly = true)
+    fun findAllDesc() = postsRepository.findAllDesc().asSequence().map { PostsListResponseDto(it) }.toList()
 }
