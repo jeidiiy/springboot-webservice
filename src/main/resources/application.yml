@@ -4,6 +4,8 @@ server:
       force-response: true
 
 spring:
+  session:
+    store-type: jdbc
   jpa:
     show-sql: true
   properties:
