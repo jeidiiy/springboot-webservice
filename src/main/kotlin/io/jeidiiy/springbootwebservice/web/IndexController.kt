@@ -24,7 +24,7 @@ class IndexController(
     fun index(model: Model, @LoginUser user: SessionUser?): String {
         model.addAttribute("posts", postsService.findAllDesc())
 
-        if (user?.name != null) {
+        if (user != null) {
             model.addAttribute("userName", user.name)
         }
 
